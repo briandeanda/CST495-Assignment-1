@@ -17,10 +17,8 @@ class ViewController: UIViewController {
         let digit = sender.currentTitle!
         
         if userIsInTheMiddleOfTypingANumber{
-            println(" imhere")
             if((digit == "." && display.text!.rangeOfString(".") == nil) || digit != "."){
                 display.text = display.text! + digit
-                
             }
         }
         else{
@@ -44,6 +42,9 @@ class ViewController: UIViewController {
         case "+": performOperation{$0 + $1}
         case "-": performOperation{$0 - $1}
         case "√": performOperation{sqrt($0)}
+        case "sin": performOperation{sin($0)}
+        case "cos": performOperation{cos($0)}
+        case "π": performOperation{$0 * 3.14159}
         default: break
         }
     }
