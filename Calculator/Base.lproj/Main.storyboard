@@ -386,7 +386,7 @@
                                     <constraint firstAttribute="height" constant="51" id="R31-w7-e42"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <state key="normal">
+                                <state key="normal" title=".">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <variation key="default">
@@ -396,7 +396,7 @@
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <action selector="operate:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9ev-FR-fMs"/>
+                                    <action selector="appendDigit:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6A1-Qk-azD"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MOj-07-Nfj">
@@ -597,8 +597,8 @@
                                 <exclude reference="sSO-QY-bwa"/>
                                 <exclude reference="QZb-nq-Li9"/>
                                 <exclude reference="fwO-db-6Er"/>
-                                <exclude reference="dTn-Fb-ChE"/>
                                 <exclude reference="DB0-dO-vjA"/>
+                                <exclude reference="dTn-Fb-ChE"/>
                                 <exclude reference="0T2-dE-9Na"/>
                                 <exclude reference="9Sv-sP-JzV"/>
                                 <exclude reference="HRp-WH-99I"/>
@@ -606,8 +606,8 @@
                                 <exclude reference="lja-va-UXH"/>
                                 <exclude reference="nBd-1S-RBj"/>
                                 <exclude reference="pG9-5k-vbb"/>
-                                <exclude reference="qvj-xS-GzT"/>
                                 <exclude reference="WJD-01-dDF"/>
+                                <exclude reference="qvj-xS-GzT"/>
                                 <exclude reference="119-fV-665"/>
                                 <exclude reference="AQ6-9u-GRN"/>
                                 <exclude reference="CaC-U1-56l"/>
