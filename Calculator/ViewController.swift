@@ -10,6 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
     @IBOutlet weak var display: UILabel!
+    @IBOutlet weak var displayOperations: UILabel!
     
     var userIsInTheMiddleOfTypingANumber = false
 
@@ -44,9 +45,15 @@ class ViewController: UIViewController {
         case "√": performOperation{sqrt($0)}
         case "sin": performOperation{sin($0)}
         case "cos": performOperation{cos($0)}
-        case "π": performOperation{$0 * 3.14159}
+        case "π": performOperation{$0 * M_PI}
         default: break
         }
+    }
+    
+    @IBAction func clear(sender: AnyObject) {
+        display.text = ""
+        displayOperations.text = ""
+        operandStack.removeAll()
     }
     
     private func performOperation(operation: (Double, Double) -> Double){
@@ -68,7 +75,9 @@ class ViewController: UIViewController {
     @IBAction func enter() {
         userIsInTheMiddleOfTypingANumber = false
         operandStack.append(displayValue)
-        println(operandStack)
+        displayOperations.text = displayOperations.text! + display.text!
+        //need to add operation symbol
+        //println(operandStack)
     }
     
     var displayValue: Double{
@@ -77,7 +86,6 @@ class ViewController: UIViewController {
         }
         set{
             display.text = "\(newValue)"
-            
             userIsInTheMiddleOfTypingANumber = false
         }
     }
