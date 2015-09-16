@@ -38,50 +38,63 @@ class ViewController: UIViewController {
             enter()
         }
         switch operation{
-        case "×": performOperation{$0 * $1}
-        case "÷": performOperation{$0 / $1}
-        case "+": performOperation{$0 + $1}
-        case "-": performOperation{$0 - $1}
-        case "√": performOperation{sqrt($0)}
-        case "sin": performOperation{sin($0)}
-        case "cos": performOperation{cos($0)}
-        case "π": performOperation{$0 * M_PI}
+        case "×": operandDisplayStack.append("×")
+                performOperation{$0 * $1}
+        case "÷": operandDisplayStack.append("÷")
+                performOperation{$0 / $1}
+        case "+": operandDisplayStack.append("+")
+                performOperation{$0 + $1}
+        case "-": operandDisplayStack.append("-")
+                performOperation{$0 - $1}
+        case "√": operandDisplayStack.append("√")
+                performOperation{sqrt($0)}
+        case "sin": operandDisplayStack.append("sin")
+                performOperation{sin($0)}
+        case "cos": operandDisplayStack.append("cos")
+                performOperation{cos($0)}
         default: break
         }
     }
     
     @IBAction func clear(sender: AnyObject) {
-        display.text = ""
+        display.text = "0"
         displayOperations.text = ""
         operandStack.removeAll()
     }
     
     private func performOperation(operation: (Double, Double) -> Double){
         if operandStack.count >= 2{
-            displayValue = operation(operandStack.removeLast(), operandStack.removeLast())
+            var temp2 = operandStack.removeLast()
+            var temp1 = operandStack.removeLast()
+            displayOperations.text = temp1.description + operandDisplayStack.removeLast() + temp2.description + " ="
+            displayValue = operation(temp1, temp2)
             enter()
         }
     }
     
     private func performOperation(operation: Double -> Double){
         if operandStack.count >= 1{
-            displayValue = operation(operandStack.removeLast())
+            var temp1 = operandStack.removeLast()
+            displayOperations.text = operandDisplayStack.removeLast() + "(" + temp1.description  + ") ="
+            operandDisplayStack.append(temp1.description)
+            displayValue = operation(temp1)
             enter()
         }
     }
     
     var operandStack = Array<Double>()
+    var operandDisplayStack = Array<String>()
     
     @IBAction func enter() {
         userIsInTheMiddleOfTypingANumber = false
         operandStack.append(displayValue)
-        displayOperations.text = displayOperations.text! + display.text!
-        //need to add operation symbol
-        //println(operandStack)
     }
     
     var displayValue: Double{
         get{
+            if(display.text! == "π"){
+                return M_PI
+            }
             return NSNumberFormatter().numberFromString(display.text!)!.doubleValue
         }
         set{
