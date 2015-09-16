@@ -23,10 +23,8 @@ class ViewController: UIViewController {
             }
         }
         else{
-            if(digit != "." && display.text! != "."){
-                display.text = digit
-                userIsInTheMiddleOfTypingANumber = true
-            }
+            display.text = digit
+            userIsInTheMiddleOfTypingANumber = true
         }
         
     }
